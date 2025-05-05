@@ -88,18 +88,20 @@ contract AIPoweredNegotiation {
     function dynamicPricing(uint256 base, uint256 min, uint256 max, uint256 offer) private pure returns (uint256) {
         if (offer >= max) return max;
         if (offer >= base) return base;
-        return (base + offer) / 2; // Simple AI-based counteroffer logic
+        uint256 counter =(base+offer)/2;
+        return counter < min ? min : counter; // Enforce a Minimum bound
+        
     }
 }
 ```
 
 # Expected Output:
 
-![Screenshot 2025-05-03 085614](https://github.com/user-attachments/assets/be6a1ee8-8c83-44aa-9f24-3ea381228b27)
+![Screenshot 2025-05-05 104850](https://github.com/user-attachments/assets/10cf8f9b-28f3-4d8f-9e4b-c3b171126f58)
 
-![Screenshot 2025-05-03 085630](https://github.com/user-attachments/assets/db6ed5ed-07f0-4c62-a034-4027f7455e7f)
+![Screenshot 2025-05-05 104915](https://github.com/user-attachments/assets/7b926ab8-825d-468d-be9a-119dda8b9580)
 
-![Screenshot 2025-05-03 085645](https://github.com/user-attachments/assets/7ac4008b-9f95-48e1-9956-78d0972b3fd1)
+![Screenshot 2025-05-05 104931](https://github.com/user-attachments/assets/c61bb63a-0abf-4acc-9517-b6474910134e)
 
 
 # High-Level Overview:
